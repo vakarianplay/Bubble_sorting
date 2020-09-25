@@ -8,7 +8,7 @@ user_id = 0 #id
 def main(message):
    if (user_id == message.chat.id): #check id
       comand = message.text  
-      try: #if no command - check_output выдаст exception
+      try: #if no command - check_output exception
          bot.send_message(message.chat.id, check_output(comand, shell = True))
       except:
          bot.send_message(message.chat.id, "Invalid input") #incorrect
