@@ -1,10 +1,15 @@
 import cv2
 import numpy as np
 import os
+
+#set type of stream
 os.environ["OPENCV_FFMPEG_CAPTURE_OPTIONS"] = "rtsp_transport;udp"
+
+#set stream urls
 cap = cv2.VideoCapture("rtsp://admin:12345@192.168.10.198:554/10", cv2.CAP_FFMPEG)
 cap2 = cv2.VideoCapture("rtsp://admin:12345@192.168.10.198:554/00", cv2.CAP_FFMPEG)
 
+#rescaling frames
 def rescale_frame(frame, percent=75):
     width = int(frame.shape[1] * percent/ 100)
     height = int(frame.shape[0] * percent/ 100)
@@ -16,6 +21,7 @@ def rescale_frame2(frame2, percent=60):
     dim = (width, height)
     return cv2.resize(frame2, dim, interpolation =cv2.INTER_AREA)
 
+#creating windows for view
 while(1):
     rect, frame = cap.read()
     rect, frame2 = cap2.read()
@@ -25,6 +31,7 @@ while(1):
     cv2.imshow('CAM2', cam2)
     cv2.waitKey(1)
 
+    #key for halt process
     if cv2.waitKey(1) & 0xFF == ord('q'):
         cv2.destroyAllWindows()
         break
