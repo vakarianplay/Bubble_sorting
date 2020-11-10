@@ -1,3 +1,4 @@
+![alt text](https://img.shields.io/badge/version-python%203.7-blue) ![alt text](https://img.shields.io/badge/pip%20install-opencv-blue) ![alt text](https://img.shields.io/badge/status-worked-brightgreen) 
 # Password generator on python (pass.py)
 __Simple python pass generator for write your login and pass in .txt file__
 ____
