@@ -23,9 +23,14 @@ __View rtsp stream via python OpenCV__
 ____
 > Install OpenCV before run
 
-![alt text](https://specialbotdata.000webhostapp.com/pic_git/55181photo_2020_11_09_12_52_44.jpg)
+____
+____
+# Radio player RETROCHILL (radioplayer/r.py)
+__Play radiostation radio.vakarian.website:8000__
+____
+> pip3 install eel
 
-
+![alt text](https://vakarian.website/readmepic/retrochill.jpg)
 ____
 ____
 # yt.py
