@@ -21,7 +21,7 @@ ____
 # RTSP Viewer (RTSP Viewer.py)
 __View rtsp stream via python OpenCV__
 ____
-> Install OpenCV before run
+> pip3 install cv2
 
 ____
 ____
@@ -31,6 +31,19 @@ ____
 > pip3 install eel
 
 ![alt text](https://vakarian.website/readmepic/retrochill.jpg)
+____
+____
+# push_sender.py
+
+> pip3 install notify_run
+
+Send push with weather report in browser push service
+
+_https://notify.run/_ _https://wttr.in/_ 
+
+Once it has been installed, you can register a new channel like so: `notify-run register`
+
+![alt text](https://vakarian.website/readmepic/push.jpg)
 ____
 ____
 # yt.py
