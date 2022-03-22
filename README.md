@@ -46,6 +46,24 @@ Once it has been installed, you can register a new channel like so: `notify-run 
 ![alt text](https://vakarian.website/readmepic/push.jpg)
 ____
 ____
+
+# usd_rub_btc.py
+
+> pip3 install requests
+
+Get USD-RUB, USD-BTC and RUB-BTC rates
+
+Crypto rates gets from _https://rate.sx/_
+
+Rates USD-RUB get from free API _https://free.currencyconverterapi.com/_
+
+For getting API key just enter your e-mail.
+
+![alt text](https://github.com/vakarianplay/readmepic/blob/main/ratespy.jpg)
+
+
+____
+____
 # yt.py
 Search youtube video from terminal
 
