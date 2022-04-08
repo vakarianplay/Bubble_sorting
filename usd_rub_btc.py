@@ -1,7 +1,8 @@
 import requests
 
 def getUsdRub():
-    usdrub = requests.get('https://free.currconv.com/api/v7/convert?apiKey=f6a0091b3994120d9fbd&q=USD_RUB&compact=ultra').json()
+    #get api key https://free.currencyconverterapi.com/
+    usdrub = requests.get('https://free.currconv.com/api/v7/convert?apiKey=YOUR_API_KEY&q=USD_RUB&compact=ultra').json()
     usdrubPrint = str(usdrub['USD_RUB'])
     return usdrubPrint
 
