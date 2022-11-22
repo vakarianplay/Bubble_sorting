@@ -1,5 +1,6 @@
 import re
 import sys
+from datetime import datetime
 
 appid ="03d92e1dcdf06982a35783083f52690a"
 
@@ -19,30 +20,44 @@ def get_wind_direction(deg):
     return res
 
 # Проверка наличия в базе информации о нужном населенном пункте
-def get_city_id(s_city_name):
-    try:
-        res = requests.get("http://api.openweathermap.org/data/2.5/find",
-                     params={'q': s_city_name, 'type': 'like', 'units': 'metric', 'lang': 'ru', 'APPID': appid})
-        data = res.json()
-        cities = ["{} ({})".format(d['name'], d['sys']['country'])
-                  for d in data['list']]
-        print("city:", cities)
-        city_id = data['list'][0]['id']
-        print('city_id=', city_id)
-    except Exception as e:
-        print("Exception (find):", e)
-        pass
-    assert isinstance(city_id, int)
-    return city_id
+# def get_city_id(s_city_name):
+#     try:
+#         res = requests.get("http://api.openweathermap.org/data/2.5/find",
+#                      params={'q': s_city_name, 'type': 'like', 'units': 'metric', 'lang': 'ru', 'APPID': appid})
+#         data = res.json()
+#         cities = ["{} ({})".format(d['name'], d['sys']['country'])
+#                   for d in data['list']]
+#         print("city:", cities)
+#         city_id = data['list'][0]['id']
+#         print('city_id=', city_id)
+#     except Exception as e:
+#         print("Exception (find):", e)
+#         pass
+#     assert isinstance(city_id, int)
+#     return city_id
 
 # Запрос текущей погоды
 def request_current_weather(city_id):
+    print(city_id)
     try:
         opwRes = requests.get("http://api.openweathermap.org/data/2.5/weather",
                      params={'id': city_id, 'units': 'metric', 'lang': 'ru', 'APPID': appid})
         opwData = opwRes.json()
         caption = opwData['weather'][0]['description']
         currentTemp = str(opwData['main']['temp']) + " (" + str(opwData['main']['feels_like']) + ")"
+
+        humidity = str(opwData['main']['humidity']) + " %"
+        pressure = str(round(int(opwData['main']['pressure'])/1.33)) + " мм рт ст"
+        wind = get_wind_direction(opwData['wind']['deg']) + " " + str(opwData['wind']['speed']) + " м/с"
+
+        sunrise = datetime.utcfromtimestamp(opwData['sys']['sunrise'] + int(opwData['timezone'])).strftime('%H:%M:%S')
+        sunset = datetime.utcfromtimestamp(opwData['sys']['sunset'] + int(opwData['timezone'])).strftime('%H:%M:%S')
+
+        print(sunrise)
+        print(sunset)
+        print(humidity)
+        print(pressure)
+        print(wind)
         print(caption)
         print(currentTemp)
     except Exception as e:
