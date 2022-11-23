@@ -1,10 +1,11 @@
 import re
 import sys
 from datetime import datetime
+import requests
 
 appid ="03d92e1dcdf06982a35783083f52690a"
 
-import requests
+
 
 def get_wind_direction(deg):
     l = ['С ','СВ',' В','ЮВ','Ю ','ЮЗ',' З','СЗ']
@@ -18,23 +19,6 @@ def get_wind_direction(deg):
             res = l[i]
             break
     return res
-
-# Проверка наличия в базе информации о нужном населенном пункте
-# def get_city_id(s_city_name):
-#     try:
-#         res = requests.get("http://api.openweathermap.org/data/2.5/find",
-#                      params={'q': s_city_name, 'type': 'like', 'units': 'metric', 'lang': 'ru', 'APPID': appid})
-#         data = res.json()
-#         cities = ["{} ({})".format(d['name'], d['sys']['country'])
-#                   for d in data['list']]
-#         print("city:", cities)
-#         city_id = data['list'][0]['id']
-#         print('city_id=', city_id)
-#     except Exception as e:
-#         print("Exception (find):", e)
-#         pass
-#     assert isinstance(city_id, int)
-#     return city_id
 
 # Запрос текущей погоды
 def request_current_weather(city_id):
@@ -80,8 +64,6 @@ def request_forecast(city_id):
         print("Exception (forecast):", e)
         pass
 
-#city_id for SPb
-# city_id = 563523
 
 request_current_weather(563523)
 request_forecast(563523)
