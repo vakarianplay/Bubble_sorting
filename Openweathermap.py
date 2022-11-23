@@ -5,8 +5,6 @@ import requests
 
 appid ="03d92e1dcdf06982a35783083f52690a"
 
-
-
 def get_wind_direction(deg):
     l = ['С ','СВ',' В','ЮВ','Ю ','ЮЗ',' З','СЗ']
     for i in range(0,8):
@@ -64,6 +62,6 @@ def request_forecast(city_id):
         print("Exception (forecast):", e)
         pass
 
-
-request_current_weather(563523)
-request_forecast(563523)
+if __name__ == '__main__':  
+    request_current_weather(563523)
+    request_forecast(563523)
