@@ -10,6 +10,10 @@ def offDevice():
     p100.turnOff()
     print("Устройство выключено")
 
+def toggleDevice():
+    p100.toggleState()
+    print("Устройство переключилось")
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -26,5 +30,7 @@ if __name__ == "__main__":
         onDevice()
     elif args.state == "off":
         offDevice()
+    elif args.state == "toggle":
+        toggleDevice()
     else:
         print("Неверное значение аргумента --state")
