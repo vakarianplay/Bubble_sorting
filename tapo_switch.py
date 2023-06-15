@@ -1,7 +1,6 @@
 import argparse
 from PyP100 import PyP100
 
-
 def onDevice():
     p100.turnOn()
     print("Устройство включено")
@@ -24,7 +23,6 @@ if __name__ == "__main__":
     p100 = PyP100.P100("192.168.X.X", "email@gmail.com", "Password123")
     p100.handshake()
     p100.login()
-
 
     if args.state == "on":
         onDevice()
